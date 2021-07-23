@@ -1,4 +1,5 @@
 import 'package:Decor8/base/base_state.dart';
+import 'package:Decor8/data/country_details.dart';
 import 'package:Decor8/data/country_model.dart';
 import 'package:Decor8/resources/app_colors.dart';
 import 'package:Decor8/resources/app_errors.dart';
@@ -40,7 +41,7 @@ class _CountryScreenState extends State<CountryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   /* return Scaffold(
       body: BlocProvider(
         create: (context) => CountryBloc()
           ..add(
@@ -93,8 +94,8 @@ class _CountryScreenState extends State<CountryScreen> {
           ),
         ),
       ),
-    );
-    /*return Scaffold(
+    );*/
+    return Scaffold(
       body: MultiBlocProvider(
         providers: [
           BlocProvider<CountryBloc>(
@@ -103,18 +104,13 @@ class _CountryScreenState extends State<CountryScreen> {
                 GetCountry(),
               ),
           ),
-          BlocProvider<CountryBloc>(
+          BlocProvider<EventListBloc>(
             create: (context) => CountryBloc()
               ..add(
                 GetCountry(),
               ),
           ),
-          BlocProvider<CountryBloc>(
-            create: (context) => CountryBloc()
-              ..add(
-                GetCountry(),
-              ),
-          ),
+
         ],
         child: BlocListener<CountryBloc, BaseState>(
           listener: (context, state) {
@@ -163,7 +159,7 @@ class _CountryScreenState extends State<CountryScreen> {
           ),
         ),
       ),
-    );*/
+    );
   }
 
   Widget offerForYou(BuildContext context, List<Country> lisItem) {
