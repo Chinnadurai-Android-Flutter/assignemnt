@@ -1,4 +1,5 @@
 import 'package:Decor8/base/base_state.dart';
+import 'package:Decor8/data/country_details.dart';
 import 'package:Decor8/data/country_model.dart';
 import 'package:Decor8/resources/app_colors.dart';
 import 'package:Decor8/resources/app_errors.dart';
@@ -94,6 +95,71 @@ class _CountryScreenState extends State<CountryScreen> {
         ),
       ),
     );
+    /*return Scaffold(
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<CountryBloc>(
+            create: (context) => CountryBloc()
+              ..add(
+                GetCountry(),
+              ),
+          ),
+          BlocProvider<EventListBloc>(
+            create: (context) => CountryBloc()
+              ..add(
+                GetCountry(),
+              ),
+          ),
+
+        ],
+        child: BlocListener<CountryBloc, BaseState>(
+          listener: (context, state) {
+            if (state is FailureState) {
+              WidgetUtils.showSnackBar(context, state.errorMessage);
+            } else if (state is SuccessState) {
+              print("${state.successResponse}");
+              itemList = state.successResponse;
+            }
+          },
+          child: BlocBuilder<CountryBloc, BaseState>(
+            builder: (context, state) {
+              if (state is FailureState) {
+                return WidgetUtils.errorWidget(AppErrors.tryAgainError);
+              } else if (state is LoadingState) {
+                return WidgetUtils.loadingWidget();
+              } else if (state is UnderConstructionState) {
+                return WidgetUtils.errorWidget(
+                    AppErrors.underConstructionError);
+              } else if (state is SuccessState) {
+                return Column(
+                  children: [
+                    AppCustomAppbar(
+                      toolBarName: itemList[1].countryName,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        physics: ScrollPhysics(),
+                        child: Column(
+                          children: [
+                            offerForYou(context, itemList),
+                            SizedBox(
+                              height: Dimen.MEDIUM,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+        ),
+      ),
+    );*/
   }
 
   Widget offerForYou(BuildContext context, List<Country> lisItem) {

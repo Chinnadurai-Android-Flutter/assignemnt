@@ -6,7 +6,7 @@ import 'package:Decor8/resources/app_colors.dart';
 import 'package:Decor8/resources/app_strings.dart';
 import 'package:Decor8/resources/dimen.dart';
 import 'package:Decor8/resources/drawables.dart';
-import 'package:Decor8/ui/countryDetails/country_screen.dart';
+import 'package:Decor8/ui/country_details/country_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
